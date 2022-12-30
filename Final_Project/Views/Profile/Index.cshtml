@@ -1,0 +1,135 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Signin Template · Bootstrap v5.2</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+
+    <!-- Boostrap core CSS -->
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/profile.js" asp-append-version="true"></script>
+     
+</head>
+<body> 
+    <div class="container"> 
+        <div class="main-box">
+            <div class="box-left">
+                <img id="avatarShow" src="https://th.bing.com/th/id/OIP.EF_rH_CGlInjFiT_D71OjAHaE8?pid=ImgDet&rs=1" class="rounded mx-auto d-block" alt="..." style="width: 80%;margin: 12% 12% 0 12%;">
+                <div class="input-group mb-3" style="width: 80%;margin: 0 10%;">
+                    <input type="file" class="form-control imgInp" id="inputGroupFile02"> 
+                </div>
+                <button type="button" class="btn btn-dark" style="margin: 0 15%;width: 68%;">
+                    Change Avatar
+                </button>
+            </div>
+            <div class="box-right">
+                <h1>Profile</h1>
+                <p>Management profile information: </p>
+                <hr />
+                <div class="form-profile"> 
+                    <table class="table table-borderless" id="changeRouter"> 
+                     
+                    </table> 
+                </div>
+            </div>
+            <div>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed  " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                Main profile
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <button id="handleProfile" class="button-list-item button-list-change select-button orderRouter" data-url="@Url.Action("MainProfile", "Profile")">
+                                Handle profile
+                            </button>
+                            <button class="button-list-item select-button orderRouter" data-url="@Url.Action("ChangePassword", "Profile")">
+                                Change Password
+                            </button>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Order
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                        </div>
+                    </div>
+                    <button class="button-list-item select-button orderRouter" data-url="@Url.Action("Order", "Profile")">
+                        Order
+                    </button>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                Cancel Order
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <script>
+        function getProfile() {
+            console.log("Pass");
+            $.ajax({
+                type: "POST",
+                url: "/Profile/get_profile",
+                data: { 'Email': "abc@gmail.com" },
+                async: false,
+                success: function (res) {
+                    if (res.success) {
+                        let data = res.data;
+                        if (data.data != null && data.data != undefined) {
+                            console.log(data.data)
+                        }
+                    }
+                    else
+                        alert(res.message);
+                },
+                failure: function (res) { },
+                error: function (res) { }
+            });
+        }
+    </script> 
+</body>
+
+</html>
