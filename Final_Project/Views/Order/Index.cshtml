@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="utf-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale = 0.1" >
+    <title>Checkout Page </title>
+
+    
+    <link rel="stylesheet" href="~/css/order.css" asp-append-version="true" />
+
+</head>
+
+<body>
+    <script src="~/js/Order.js"></script>
+    <main class="container">
+        <h1 class="heading">
+            <ion-icon name="cart-outline"></ion-icon> GIỎ HÀNG
+        </h1>
+
+        <div class="item-flex">
+
+            <section class="checkout"> 
+                <h2 class="section-heading">CHI TIẾT THANH TOÁN</h2>
+                <form action="#">
+                <div class="payment-form">
+                    <lable class="label-default">Họ và tên</lable>
+                    <div class="name">
+                            <input type="text" class="input-default" />
+                    </div>
+
+                    <label class="label-default">Số Điện Thoại</label>
+                    <div class="phone">
+                        <input type="text" class="input-default" />
+                    </div>
+                     <label class="label-default">Địa chỉ</label>
+                    <div class="address">
+                        <input type="text" class="input-default" value="Số nhà,tên đường" />
+                    </div>
+                    <label class="label-default">Quận/Huyện,Thị Xã</label>
+
+                    <div class="district">
+                        <input type="text" class="input-default" value="Quận/Huyện,Thị Xã" />
+                    </div>
+                    
+                    <label class="label-default">Thành Phố</label>
+                    <div class="City">
+                        <input type="text" class="input-default" value="Thành phố" />
+                    </div>
+                     
+                    <label class="label-default">Tỉnh</label>
+                    <div class="province">
+                        
+                        <select class="address province" name="province">
+                            <option value="angiang">An Giang</option>
+                            <option value="vungtau">Bà Rịa – Vũng Tàu</option>
+                            <option value="bacgiang">Bắc Giang</option>
+                            <option value="backan">Bắc Kạn</option>
+                            <option value="baclieu">Bạc Liêu</option>
+                            <option value="bacninh">Bắc Ninh</option>
+                            <option value="bentre">Bến Tre</option>
+                            <option value="binhdinh">Bình Định</option>
+                            <option value="binhduong">Bình Dương</option>
+                            <option value="binhphuoc">Bình Phước</option>
+                            <option value="camau">Cà Mau</option>
+                            <option value="cantho">Cần Thơ</option>
+                            <option value="caobang">Cao Bằng</option>
+                            <option value="danang">Đà Nẵng</option>
+                            <option value="daklak">Đắk Lắk</option>
+                            <option value="daknong">Đắk Nông</option>
+                            <option value="dienbien">Điện Biên</option>
+                            <option value="dongnai">Đồng Nai</option>
+                            <option value="dongthap">Đồng Tháp</option>
+                            <option value="gialai">Gia Lai</option>
+                            <option value="hagiang">Hà Giang</option>
+                            <option value="hanam">Hà Nam</option>
+                            <option value="hanoi">Hà Nội</option>
+                            <option value="hatinh">Hà Tĩnh</option>
+                            <option value="haiduong">Hải Dương</option>
+                            <option value="haiphong">Hải Phòng</option>
+                            <option value="haugiang">Hậu Giang</option>
+                            <option value="hoabinh">Hòa Bình</option>
+                            <option value="hungyen">Hưng Yên</option>
+                            <option value="khanhhoa">Khánh Hòa</option>
+                            <option value="kiengiang">Kiên Giang</option>
+                            <option value="kontum">Kon Tum</option>
+                            <option value="laichau">Lai Châu</option>
+                            <option value="lamdong">Lâm Đồng</option>
+                            <option value="langson">Lạng Sơn</option>
+                            <option value="laocai">Lào Cai</option>
+                            <option value="longan">Long An</option>
+                            <option value="namdinh">Nam Định</option>
+                            <option value="nghean">Nghệ An</option>
+                            <option value="ninhbinh">Ninh Bình</option>
+                            <option value="ninhthuan">Ninh Thuận</option>
+                            <option value="phutho">Phú Thọ</option>
+                            <option value="phuyen">Phú Yên</option>
+                            <option value="quangbinh">Quảng Bình</option>
+                            <option value="quangnam">Quảng Nam</option>
+                            <option value="quangngai">Quảng Ngãi</option>
+                            <option value="quangninh">Quảng Ninh</option>
+                            <option value="quangtri">Quảng Trị</option>
+                            <option value="soctrang">Sóc Trăng</option>
+                            <option value="sonla">Sơn La</option>
+                            <option value="tayninh">Tây Ninh</option>
+                            <option value="thaibinh">Thái Bình</option>
+                            <option value="thainguyen">Thái Nguyên</option>
+                            <option value="thanhhoa">Thanh Hóa</option>
+                            <option value="thuathienhue">Thừa Thiên Huế</option>
+                            <option value="tiengiang">Tiền Giang</option>
+                            <option value="hcm">TP Hồ Chí Minh</option>
+                            <option value="travinh">Trà Vinh</option>
+                            <option value="tuyenquang">Tuyên Quang</option>
+                            <option value="vinhlong">Vĩnh Long</option>
+                            <option value="vinhphuc">Vĩnh Phúc</option>
+                            <option value="yenbai">Yên Bái</option>
+                        </select>
+
+                    </div>
+
+                    <label class="label-default">Email</label>
+                    <div class="email">
+                        <input type="text" class="input-default" />
+                    </div>
+                    </div>
+                 </form>
+
+                    <label class="label-default">Hình thức thanh toán</label>
+                    <div class="payment-method">
+
+                        <button class="method selected">
+                            <ion-icon name="card"></ion-icon>
+
+                            <span>Thẻ nội địa</span>
+
+                            <ion-icon class="checkmark fill" name="checkmark-circle"></ion-icon>
+                        </button>
+
+                        <button class="method">
+                            <ion-icon name="logo-paypal"></ion-icon>
+
+                            <span>Thẻ Visa/ Ghi nợ</span>
+
+                            <ion-icon class="checkmark" name="checkmark-circle-outline"></ion-icon>
+                        </button>
+
+                        <button class="method1">
+
+                            <span>Thanh Toán khi nhận hàng</span>
+
+                            <ion-icon class="checkmark" name="checkmark-circle-outline"></ion-icon>
+                        </button>
+
+                    </div>
+
+                     <button class="btn btn-primary">
+                          <b>Thanh toán</b> $ <span id="payAmount">50 000 000 triệu</span>
+                      </button>   
+            </section>
+                <section class="cart">
+                    <div class="cart-item-box">
+                        <h2 class="section-heading">Giỏ Hàng</h2>
+                        <div class="product-card">
+                            <div class="card">
+                                <div class="img-box">
+                                    <img src="~/img/pc.png" alt="pc 54 cu" width=" 400px" class="product-img" />
+                                </div>
+
+                                <div class="detail">
+                                    <h4 class="produc-name">PC 50 cu</h4>
+
+                                    <div class="warpper">
+                                        <div class="product-qty">
+                                            <button id="decrement">
+                                                <ion-icon name="remove-outline"></ion-icon>
+                                            </button>
+
+                                            <span id="quantity" min="0">1</span>
+
+                                            <button id="increment">
+                                                <ion-icon name="add-outline"></ion-icon>
+                                            </button>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="price">
+
+                                        <span id="price">50 000 000 triệu</span>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="wrapper">
+
+                        <div class="discount-token">
+
+                            <label for="discount-token" class="label-default">Phiếu mua hàng/ Mã giảm giá</label>
+
+                            <div class="wrapper-flex">
+
+                                <input type="text" name="discount-token" id="discount-token" class="input-default">
+
+                                <button class="btn btn-outline">Áp dụng</button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="amount">
+
+                            <div class="subtotal">
+                                <span>Tổng cộng</span> <span>$ <span id="subtotal">50 000 000 triệu</span></span>
+                            </div>
+
+                            <div class="shipping">
+                                <span>Phí vận chuyển</span> <span>$ <span id="shipping">0.00</span></span>
+                            </div>
+                            <div class="total">
+                                <span>Tổng cộng</span> <span>$ <span id="total">50 000 000 triệu</span></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+           
+    </main>
+    <script type="module" src ="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

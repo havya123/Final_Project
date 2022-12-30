@@ -1,0 +1,112 @@
+﻿.heading {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: red;
+    text-align: center;
+}
+
+
+
+.payment_form {
+   width :1038.4px;
+   height: 369.4px
+}
+.card {
+    border:none;
+    color: #212529;
+    display: flex ;
+    flex-direction: column ;
+    line-height: 24px
+}
+.item-flex{
+    display:flex;
+    flex-grow:1;
+
+}
+.checkout{
+    width:70%;
+    padding:40px var(--px);
+    border-right: 1px solid ;
+    border-right-color: gray;
+}
+.section-heading{
+    color: red;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.payment_form{
+    margin-bottom: 40px;
+}
+.payment-method{
+    display: flex;
+    gap: 30px;
+    margin-bottom:40px;
+}
+
+.payment-method .method {
+        border: 1px solid var(--quick-silver);
+        border-radius: var(--radius);
+        width: 30%;
+        display: flex;
+        align-items: center;
+        padding: 15px 30px;
+        gap: 20px;
+        cursor: pointer;
+ }
+.payment-method .method1 {
+        border: 1px solid var(--quick-silver);
+        border-radius: var(--radius);
+        width: 33%;
+        display: flex;
+        align-items: center;
+        padding: 15px 30px;
+        gap: 20px;
+        cursor: pointer;
+    }
+
+.payment-method .method .checkmark {
+        margin-left: auto;
+        color: var(--quick-silver);
+ }
+.payment-method .method .fill{
+    color:blue;
+}
+
+.input-default {
+    background: var(--platinum);
+    border-radius: var(--radius);
+    color: var(--davys-gray);
+}
+
+.payment-form input {
+    padding: 5px 100px;
+    font-size: var(--fs-18);
+    font-weight: var(--fw-5);
+    margin-right:auto;
+    
+}
+
+.payment-form select {
+    padding: 5px 120px;
+    font-size: var(--fs-18);
+    font-weight: var(--fw-5);
+    margin-right: auto;
+}
+
+.btn-primary {
+    background: var(--azure);
+    font-weight: var(--fw-5);
+    color: var(--white);
+    padding: 13px 45px;
+}
+
+.btn-primary b {
+        margin-right: 10px;
+    }
+
+.cart{
+    margin-left:10px
+}
