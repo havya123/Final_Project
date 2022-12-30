@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Content Remove="wwwroot\js\profile.js" />
   </ItemGroup>
 
@@ -30,6 +31,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+=======
+    <Folder Include="wwwroot\img\" />
+>>>>>>> c827a6d097dddc9b6ed273371c46862714d297c7
   </ItemGroup>
 
 </Project>
