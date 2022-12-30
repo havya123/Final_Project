@@ -11,10 +11,6 @@ namespace Sign_in.Controllers
     {
         private string _key;
 
-        public OrderController()
-        {
-        }
-
         public IActionResult Index()
         {
 
