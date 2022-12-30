@@ -21,34 +21,33 @@
         <div class="item-flex">
 
             <section class="checkout"> 
-                <h2 class="section-heading">CHI TIẾT THANH TOÁN</h2>
+                <h2 class="section-heading">Payment Detail</h2>
                 <form action="#">
                 <div class="payment-form">
-                    <lable class="label-default">Họ và tên</lable>
+                    <lable class="label-default">Full Name</lable>
                     <div class="name">
                             <input type="text" class="input-default" />
                     </div>
 
-                    <label class="label-default">Số Điện Thoại</label>
+                    <label class="label-default">Phone Number</label>
                     <div class="phone">
                         <input type="text" class="input-default" />
                     </div>
-                     <label class="label-default">Địa chỉ</label>
+                     <label class="label-default">Address</label>
                     <div class="address">
-                        <input type="text" class="input-default" value="Số nhà,tên đường" />
+                        <input type="text" class="input-default" placeholder="Address number, Street name" />
                     </div>
-                    <label class="label-default">Quận/Huyện,Thị Xã</label>
-
+                        <label class="label-default">Districts and Towns</label>
                     <div class="district">
-                        <input type="text" class="input-default" value="Quận/Huyện,Thị Xã" />
+                           <input type="text" class="input-default" placeholder="Districts and Towns" />
                     </div>
                     
-                    <label class="label-default">Thành Phố</label>
+                    <label class="label-default">City</label>
                     <div class="City">
-                        <input type="text" class="input-default" value="Thành phố" />
+                        <input type="text" class="input-default" placeholder="City" />
                     </div>
                      
-                    <label class="label-default">Tỉnh</label>
+                    <label class="label-default">Province</label>
                     <div class="province">
                         
                         <select class="address province" name="province">
@@ -144,7 +143,7 @@
                             <ion-icon class="checkmark" name="checkmark-circle-outline"></ion-icon>
                         </button>
 
-                        <button class="method1">
+                        <button class="method directly">
 
                             <span>Thanh Toán khi nhận hàng</span>
 
@@ -153,9 +152,6 @@
 
                     </div>
 
-                     <button class="btn btn-primary">
-                          <b>Thanh toán</b> $ <span id="payAmount">50 000 000 triệu</span>
-                      </button>   
             </section>
                 <section class="cart">
                     <div class="cart-item-box">
@@ -163,7 +159,7 @@
                         <div class="product-card">
                             <div class="card">
                                 <div class="img-box">
-                                    <img src="~/img/pc.png" alt="pc 54 cu" width=" 400px" class="product-img" />
+                                    <img src="~/img/pc.png" alt="pc 50 củ " class="product-img" />
                                 </div>
 
                                 <div class="detail">
@@ -228,7 +224,11 @@
 
                         </div>
 
-                    </div>
+                    <button class="btn btn-primary">
+                        <b>Thanh toán</b> $ <span id="payAmount">50 000 000 triệu</span>
+                    </button>
+
+                </div>
                 </section>
             </div>
            
