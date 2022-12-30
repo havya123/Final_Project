@@ -23,8 +23,7 @@ $(document).ready(function () {
     }
     $(".imgInp").change(function () {
         readURL(this);
-    }); 
-            $('#datepicker').datepicker(); 
+    });  
     //set default page is MainProfile
     LoadDialog("/Profile/MainProfile");
     //
