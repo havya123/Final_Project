@@ -73,13 +73,14 @@
     background: var(--platinum);
     border-radius: var(--radius);
     color: var(--davys-gray);
+    text-align:left;
 }
 
 .payment-form input {
     padding: 5px 100px;
     font-size: var(--fs-18);
     font-weight: var(--fw-5);
-    margin-right:auto;
+    
     
 }
 
