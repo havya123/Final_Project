@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <script src="~/js/Order.js"></script>
     <main class="container">
         <h1 class="heading">
             <ion-icon name="cart-outline"></ion-icon> Cart
@@ -126,28 +125,28 @@
 
                     <label class="label-default">Payment Method</label>
                     <div class="payment-method">
-
-                        <button class="method selected">
+                      
+                        <button  class="method banking">
                             <ion-icon name="card"></ion-icon>
 
                             <span>Banking</span>
 
-                            <ion-icon class="checkmark fill" name="checkmark-circle"></ion-icon>
+                            <ion-icon  class="checkmark  " name="checkmark-circle-outline"></ion-icon>
                         </button>
 
-                        <button class="method">
+                    <button class="method visa">
                             <ion-icon name="logo-paypal"></ion-icon>
 
                             <span>Visa/ Debit</span>
 
-                            <ion-icon class="checkmark" name="checkmark-circle-outline"></ion-icon>
+                        <ion-icon class="checkmark " name="checkmark-circle-outline"></ion-icon>
                         </button>
 
-                        <button class="method directly">
+                    <button class="method directly">
 
                         <span> Cash On Delivery</span>
 
-                            <ion-icon class="checkmark" name="checkmark-circle-outline"></ion-icon>
+                            <ion-icon  class="checkmark " name="checkmark-circle-outline"></ion-icon>
                         </button>
 
                     </div>
@@ -171,7 +170,7 @@
                                                 <ion-icon name="remove-outline"></ion-icon>
                                             </button>
 
-                                            <span id="quantity" min="0">1</span>
+                                            <span id="quantity">1</span>
 
                                             <button id="increment">
                                                 <ion-icon name="add-outline"></ion-icon>
@@ -182,7 +181,8 @@
 
                                     <div class="price">
 
-                                        <span id="price">50 000 000 millions</span>
+                                    <span id="price">50 </span> $
+                                      
 
                                     </div>
                                 </div>
@@ -212,20 +212,20 @@
                         <div class="amount">
 
                             <div class="subtotal">
-                                <span>Total</span> <span>$ <span id="subtotal">50 000 000 millions</span></span>
+                            <span>Total</span> <span>$ <span id="subtotal">50 </span> </span>
                             </div>
 
                             <div class="shipping">
-                                <span>Total</span> <span>$ <span id="shipping">0.00</span></span>
+                            <span>Shipping</span> <span>$ <span id="shipping">50 </span> </span>
                             </div>
                             <div class="total">
-                                <span>Total amount</span> <span>$ <span id="total">50 000 000 millions</span></span>
+                            <span>Total amount</span> <span>$ <span id="total">50 </span> </span>
                             </div>
 
                         </div>
 
                     <button class="btn btn-primary">
-                        <b>Thanh toán</b> $ <span id="payAmount">50 000 000 millions</span>
+                        <b>Thanh toán</b> $ <span id="payAmount">50 millions</span>
                     </button>
 
                 </div>
@@ -235,6 +235,8 @@
     </main>
     <script type="module" src ="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="~/js/Order.js" asp-append-version="true"></script>
+
 </body>
 
 </html>
