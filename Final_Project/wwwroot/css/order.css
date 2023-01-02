@@ -7,6 +7,12 @@
     text-align: center;
 }
 
+
+
+.payment_form {
+   width :1038.4px;
+   height: 369.4px
+}
 .card {
     border:none;
     color: #212529;
@@ -38,7 +44,6 @@
     display: flex;
     gap: 30px;
     margin-bottom:40px;
-    
 }
 
 .payment-method .method {
@@ -52,16 +57,14 @@
         cursor: pointer;
  }
 
-
 .payment-method .method .checkmark {
         margin-left: auto;
         color: var(--quick-silver);
  }
-
-
-.choose{
-    background-color:blue;
+.payment-method .method .fill{
+    color:blue;
 }
+
 .label-default{
     margin-top:10px;
 }
@@ -70,13 +73,15 @@
     background: var(--platinum);
     border-radius: var(--radius);
     color: var(--davys-gray);
-   
+    text-align:left;
 }
 
 .payment-form input {
-    padding: 5px ;
-    width:500px;
- 
+    padding: 5px 100px;
+    font-size: var(--fs-18);
+    font-weight: var(--fw-5);
+    
+    
 }
 
 .payment-form select {
@@ -84,7 +89,6 @@
     font-size: var(--fs-18);
     font-weight: var(--fw-5);
     margin-right: auto;
-    width: 500px;
 }
 
 .btn-primary {
@@ -133,4 +137,3 @@
 .total{
     margin-bottom:10px
 }
-
