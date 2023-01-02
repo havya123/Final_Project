@@ -6,13 +6,14 @@ const priceElem = document.querySelectorAll('#price');
 const totalElem = document.querySelector('#total');
 const subtotalElem = document.querySelector('#subtotal');
 const shippingElm = document.querySelector('#shipping');
-const discountElm = document.querySelector('#discount-token');
 
+
+console.log(quantityElem);
 for (let i = 0; i < incrementBtn.length; i++) {
 
     incrementBtn[i].addEventListener('click', function () {
 
-       
+
         let increment = Number(this.previousElementSibling.textContent);
 
         increment++;
@@ -25,10 +26,10 @@ for (let i = 0; i < incrementBtn.length; i++) {
 
     decrementBtn[i].addEventListener('click', function () {
 
-  
+
         let decrement = Number(this.nextElementSibling.textContent);
 
-       
+
         decrement <= 1 ? 1 : decrement--;
 
         this.nextElementSibling.textContent = decrement;
@@ -42,12 +43,12 @@ for (let i = 0; i < incrementBtn.length; i++) {
 
 const totalCalc = function () {
 
- 
+
     const shipping = 50;
     let subtotal = 0;
     let total = 0;
 
- 
+
     for (let i = 0; i < quantityElem.length; i++) {
 
         subtotal += Number(quantityElem[i].textContent) * Number(priceElem[i].textContent);
@@ -60,7 +61,7 @@ const totalCalc = function () {
 
     shippingElm.textContent = shipping;
 
-  
+
     total = subtotal + shipping;
 
 

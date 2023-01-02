@@ -22,8 +22,8 @@
     line-height: 24px
 }
 
-.choose{
-    background-color:aqua;
+.choose {
+    background-color: aqua;
 }
 
 .item-flex {
@@ -55,7 +55,7 @@
     margin-bottom: 40px;
 }
 
-.payment-method .method {
+    .payment-method .method {
         border: 1px solid var(--quick-silver);
         border-radius: 10px;
         width: 30%;
@@ -66,7 +66,7 @@
         cursor: pointer;
     }
 
-.payment-method .method .checkmark {
+        .payment-method .method .checkmark {
             margin-left: auto;
             color: var(--quick-silver);
         }
@@ -142,9 +142,4 @@
 }
 
 .shipping {
-    margin-bottom: 10px
-}
-
-.total {
-    margin-bottom: 10px
-}
+    margin-b
