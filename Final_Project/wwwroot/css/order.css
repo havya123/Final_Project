@@ -10,40 +10,49 @@
 
 
 .payment_form {
-   width :1038.4px;
-   height: 369.4px
+    width: 1038.4px;
+    height: 369.4px
 }
+
 .card {
-    border:none;
+    border: none;
     color: #212529;
-    display: flex ;
-    flex-direction: column ;
+    display: flex;
+    flex-direction: column;
     line-height: 24px
 }
-.item-flex{
-    display:flex;
-    flex-grow:1;
 
+.choose{
+    background-color:aqua;
 }
-.checkout{
-    width:70%;
-    padding:40px var(--px);
-    border-right: 1px solid ;
+
+.item-flex {
+    display: flex;
+    flex-grow: 1;
+}
+
+.checkout {
+    width: 70%;
+    padding: 40px var(--px);
+    border-right: 1px solid;
     border-right-color: gray;
 }
-.section-heading{
+
+.section-heading {
     color: red;
     margin-bottom: 30px;
     font-size: 20px;
     font-weight: 500;
 }
-.payment_form{
+
+.payment_form {
     margin-bottom: 40px;
 }
-.payment-method{
+
+.payment-method {
     display: flex;
     gap: 30px;
-    margin-bottom:40px;
+    margin-bottom: 40px;
 }
 
 .payment-method .method {
@@ -55,33 +64,28 @@
         padding: 15px 30px;
         gap: 20px;
         cursor: pointer;
- }
+    }
 
 .payment-method .method .checkmark {
-        margin-left: auto;
-        color: var(--quick-silver);
- }
-.payment-method .method .fill{
-    color:blue;
-}
+            margin-left: auto;
+            color: var(--quick-silver);
+        }
 
-.label-default{
-    margin-top:10px;
+.label-default {
+    margin-top: 10px;
 }
 
 .input-default {
     background: var(--platinum);
     border-radius: var(--radius);
     color: var(--davys-gray);
-    text-align:left;
+    text-align: left;
 }
 
 .payment-form input {
     padding: 5px 100px;
     font-size: var(--fs-18);
     font-weight: var(--fw-5);
-    
-    
 }
 
 .payment-form select {
@@ -98,7 +102,7 @@
     padding: 13px 45px;
 }
 
-.btn-primary b {
+    .btn-primary b {
         margin-right: 10px;
     }
 
@@ -110,30 +114,37 @@
     margin-left: 10px
 }
 
-.product-img{
+.product-img {
     width: 450px;
-    margin-bottom:10px;
-}
-.produc-name{
-    margin-bottom:10px;
-}
-.product-qty{
-    margin-bottom:10px;
-}
-#price{
-    font-size:larger ;
-    font-weight:500;
-    margin-bottom:10px;
-}
-.discount-token{
     margin-bottom: 10px;
 }
-.subtotal{
-    margin-bottom:10px
+
+.produc-name {
+    margin-bottom: 10px;
 }
-.shipping{
-    margin-bottom:10px
+
+.product-qty {
+    margin-bottom: 10px;
 }
-.total{
-    margin-bottom:10px
+
+#price {
+    font-size: larger;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.discount-token {
+    margin-bottom: 10px;
+}
+
+.subtotal {
+    margin-bottom: 10px
+}
+
+.shipping {
+    margin-bottom: 10px
+}
+
+.total {
+    margin-bottom: 10px
 }
