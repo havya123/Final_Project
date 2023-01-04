@@ -1,16 +1,24 @@
 ﻿using Final_Project.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Hosting.Internal;
+using System;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Text.RegularExpressions;
+
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace Final_Project.Controllers
 {
-    public class ProfileController: Controller
+    public class ProfileController : Controller
     {
+        private readonly IWebHostEnvironment webHostEnvironment;
         public IActionResult Index()
-        { 
+        {
             return View();
 
         }
@@ -29,31 +37,11 @@ namespace Final_Project.Controllers
             return View();
 
         }
-        private object? getProfile(string email)
-        {
-            try
-            { 
-                if (email != null)
-                {
-                    var db = new WebContext();
-                    var ls = db.Profiles.Where(x => x.Email == email).ToList(); 
-                    return new
-                    {
-                        Data = ls
-                    };
-                }
-                return null;    
-                
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
+
         [HttpPost]
-        public IActionResult get_profile(String Email)
+        public IActionResult get_profile(string Email)
         {
-            var data = getProfile(Email) ;
+            var data = getProfile(Email);
             if (data != null)
             {
                 var res = new
@@ -74,64 +62,88 @@ namespace Final_Project.Controllers
                 return Json(res);
             }
         }
-
-
-
-        public Profiles? checkDB(String email)
+        [HttpPost]
+        public IActionResult update_profile(Profile data)
         {
-            Profiles? res = new Profiles();
-            if (email != null)
+            var result = updateProfile(data);
+            if (data != null)
             {
-                string cnStr = "Server = .; Database= Web; User id = admin; password = 123; Encrypt=False";
-                SqlConnection cnn = new SqlConnection(cnStr);
-                try
+                var res = new
                 {
-                    cnn.Open();
-                    SqlCommand cmd = cnn.CreateCommand();
-                    cmd.Connection = cnn;
-
-                    string sqlStr = "select * from Profiles where Email = '" + email + "'";  
-
-                    cmd.CommandText = sqlStr;
-                    cmd.CommandType = CommandType.Text;
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        res.Id = int.Parse(reader["Id"].ToString());
-                        res.Name = reader["Name"].ToString();
-                        res.Email = reader["Email"].ToString(); 
-                    }
-                    reader.Close();
-                    if (!(res.Id > 0))
-                        res = null;
-
-                }
-                catch (Exception ex)
+                    Success = true,
+                    Message = "",
+                    Data = result
+                };
+                return Json(res);
+            }
+            else
+            {
+                var res = new
                 {
-                    res = null;
-                }
-                if (cnn.State == System.Data.ConnectionState.Open)
+                    Success = false,
+                    Message = "Lỗi xảy ra !"
+                };
+                return Json(res);
+            }
+        } 
+        private object? getProfile(string grp) 
+        {
+            try
+            {
+                var db = new WebContext();
+                var ls = db.Profiles.Where(x => x.Email == grp).ToList(); 
+                return new
                 {
-                    cnn.Close();
+                    Data = ls, 
+                };
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+         
+        private object? updateProfile(Profile c)
+        {
+            try
+            {
+                if (c == null)
+                    return null; 
+                string uniqueFileName = uploadedFile(c);
+                var db = new WebContext();
+                var c1 = db.Profiles.Where(x => x.Id == c.Id).FirstOrDefault();
+                
+                if (c1.Phone != c.Phone)
+                    c1.Phone = c.Phone;
+                if (c1.Name != c.Name)
+                    c1.Name = c.Name;
+                if (c1.Gender != c.Gender)
+                    c1.Gender = c.Gender; 
+                if (c1.ImageURL != uniqueFileName)
+                    c1.ImageURL = uniqueFileName; 
+                db.Profiles.Update(c1);
+                db.SaveChanges();
+                return c1;
+            }
+            catch (Exception ex)
+            { 
+                return null;
+            }
+        } 
+        private string uploadedFile(Profile profile)
+        {
+            string uniqueFileName = null;
+            if(profile.Avatar != null)
+            {
+                string uploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "img");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + profile.Avatar.FileName;
+                string filePath = Path.Combine(uploadFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    profile.Avatar.CopyTo(fileStream);
                 }
             }
-            return res;
-        }
-    } 
-    public class Profiles
-    {
-        public int Id { get; set; }
-
-        public string? Name { get; set; }
-
-        public string? Email { get; set; }
-
-        public string? Password { get; set; }
-
-        public string? Phone { get; set; }
-
-        public string? Avatar { get; set; }
-
-        public string? Address { get; set; }
+            return uniqueFileName;
+        } 
     }
 }

@@ -79,3 +79,10 @@ h1 {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
 }
+
+th > a {
+    cursor: pointer;
+    color: blue;
+    font-weight: 500;
+    border-bottom: 1px solid;
+}
