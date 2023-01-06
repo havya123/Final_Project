@@ -1,31 +1,34 @@
 ﻿ console.log("Working...") 
-    $.each($(".select-button"), (function (key, item) {
-        $(item).click(() => {
-            $(".select-button").removeClass("button-list-change"); 
-            if ($(this).hasClass("button-list-change")) {
-                $(item).removeClass("button-list-change"); 
-            } else {
-                $(this).addClass("button-list-change"); 
-            }
-        });
-    }))
-
-    
+var name;
+var id;
 var fileImage;
-    //Change Avatar when update from client and show image out UI
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader(); 
-            reader.onload = function (e) {
-                $('#avatarShow').attr('src', e.target.result);
-            } 
-            reader.readAsDataURL(input.files[0]);
-            fileImage = input.files[0];
+var listOrder = null;
+//change style off button when click change pages
+$.each($(".select-button"), (function (key, item) {
+    $(item).click(() => {
+        $(".select-button").removeClass("button-list-change");
+        if ($(this).hasClass("button-list-change")) {
+            $(item).removeClass("button-list-change");
+        } else {
+            $(this).addClass("button-list-change");
         }
+    });
+}));
+    
+//Change Avatar when update from client and show image out UI
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader(); 
+        reader.onload = function (e) {
+            $('#avatarShow').attr('src', e.target.result);
+        } 
+        reader.readAsDataURL(input.files[0]);
+        fileImage = input.files[0];
     }
-    $(".imgInp").change(function () {
-        readURL(this);
-    });  
+}
+$(".imgInp").change(function () {
+    readURL(this);
+});  
     //set default page is MainProfile
     LoadDialog("/Profile/MainProfile"); 
     function GetAjaxData(url, method, datatype, data) {
@@ -45,7 +48,8 @@ var fileImage;
             }
         });
         return response;
-    } 
+} 
+
     //insert data of pages in table tags when button with class = "orderRouter" is click 
     $(".orderRouter").click(function () { 
         var url = $(this).attr("data-url");
@@ -55,12 +59,12 @@ var fileImage;
         this.counter = undefined;
         var htmlcontent = GetAjaxData(loadurl, "GET", "html");
         $("#changeRouter").html(htmlcontent);
-        getProfile("abc@gmail.com"); 
+        getProfile("abc@gmail.com");  
     }
-var name;
-var id;
+
 //fetch data User
-function getProfile(grp) {  
+function getProfile(grp) {
+    loadingOn();
     $.ajax({
         type: "POST",
         url: "/profile/get_profile",
@@ -68,7 +72,7 @@ function getProfile(grp) {
         async: false,
         success: function (res) {
             if (res.success) {
-                let data = res.data;  
+                let data = res.data;
                 const dataUser = data.data[0];
                 if (dataUser != null && dataUser != undefined) {
                     console.log(dataUser)
@@ -80,13 +84,15 @@ function getProfile(grp) {
                     $("#phoneUser").val(dataUser.phone);
                     dataUser.gender == "Man" ? $("#checkedMan").attr('checked', true) : $("#checkedWoman").attr('checked', true);
                     $("#emailUserChange").val(dataUser.email.split('@gmail.com').join(''));
-                } 
+                }
             }
-            else
+            else {
+                loadingOff();
                 alert(res.message); 
+            }
         },
-        failure: function (res) {  },
-        error: function (res) { }
+        failure: function (res) { loadingOff() },
+        error: function (res) { loadingOff() }
     });
 }
 //allow user change there name 
@@ -104,7 +110,7 @@ $("#showInputName").addClass("form-control");
     }
 }
 
-// 
+// save information about user was change
 function save() {
     if ($("#emailUser").text() != "" && $("#emailUser").text() != null && $("#emailUser").text() != undefined) {
         var itm = {  
@@ -112,24 +118,16 @@ function save() {
             Phone: $("#phoneUser").val(),
             Email: $("#emailUser").text(), 
             Name: $("#showInputName").val(),
-            Gender: $('#checkedMan').is(":checked") ? "Man" : "Woman",
-            Avatar: fileImage
+            Gender: $('#checkedMan').is(":checked") ? "Man" : "Woman", 
         };
-        Avatar: fileImage
-        const formData = new FormData();
-        formData.append("data", itm); 
+        console.log(itm)
         $.ajax({
             type: "POST",
             url: "/profile/update_profile",
-            data: { 'data': formData },
-            dataType: 'json',
-            contentType: false,
-            processData: false,
+            data: { 'data': itm }, 
             success: function (res) {
                 if (res.success) {
-                    alert("Update successfully !!");
-                    let c = res.data;
-                    console.log(c);
+                    alert("Update successfully !!"); 
                 }
                 else
                     alert(res.message);
@@ -138,23 +136,115 @@ function save() {
             error: function (res) { }
         });
     } 
-}
-
+} 
 $("#change-profile").click(function (e) {
     e.preventDefault();
     save();
-}) 
-
-
-//Change Password
+})
+$("dataOrder").click(function (e) {
+    e.preventDefault();
+    alert("Order");
+    get_order();
+})
+//Change Password or email
 function changePass() { 
-    if ($("#newPass").val() == $("#confirmPass").val()) {
+    const email = $("#emailUserChange").val();
+    const currentPass = $("#currentPass").val();
+    const username = $("#showInputName").val();
+    const newPass = $("#newPass").val();
+    const confirmPass = $("#confirmPass").val()
+
+    if (newPass === "" && confirmPass === "" && email !== "" && currentPass !== "") { 
         const itm = {
-            Password: $("#currentPass").val(),
-            NewPassword: $("#newPass").val()
+            email: $("#emailUserChange").val().trimEnd() + '@gmail.com',
+            password: currentPass,
+            username: username
         }
-    console.log(itm);
-    } else {
-        alert("Password isn't same");
+        $.ajax({
+            type: "POST",
+            url: "/profile/change_email",
+            data: itm,
+            async: false,
+            success: function (res) {
+                if (res.success) 
+                    alert("Update Email Sucess!!"); 
+                else
+                    alert(res.message);
+            },
+            failure: function (res) { },
+            error: function (res) { }
+        });
     }
+    else if (newPass === "" && confirmPass === "" && email !== "") {
+        alert("Need input password");
+        $("#currentPass").addClass("is-invalid");
+    }
+    else {
+        if (newPass == confirmPass) {
+            const itm = {
+                username: username,
+                oldPass: currentPass,
+                newPass: newPass
+            } 
+            $.ajax({
+                type: "POST",
+                url: "/profile/change_pass",
+                data: itm,
+                async: false,
+                success: function (res) {
+                    if (res.success) 
+                        alert("Update PassWord Sucess!!");  
+                    else
+                        alert(res.message);
+                },
+                failure: function (res) { },
+                error: function (res) { }
+            });
+        } else {
+            alert("Password isn't same");
+            $("#confirmPass").addClass(" is-invalid");
+            $("#confirmPass").focus();
+        }
+    }
+     
+}
+
+function get_order() {  
+    $.ajax({
+        type: "POST",
+        url: "/profile/get_order",
+        data: { "Id": id },
+        success: function (res) {
+            if (res.success) {
+    alert("Wu")
+                let data = res.data;
+                if (data.data != null && data.data != undefined) {
+                    let stt = (p - 1) * size + 1;
+                    let dataRes = [];
+                    for (var i = 0; i < data.data.length; i++) {
+                        let itm = data.data[i];
+                        itm.STT = stt;
+                        dataRes.push(itm);
+                        stt++;
+                    }
+                    listOrder = dataRes; 
+                } 
+            }
+            else {
+                loadingOff();
+                alert(res.message);
+            }
+        },
+        failure: function (res) { loadingOff(); },
+        error: function (res) { loadingOff(); }
+    });
+}
+
+
+function loadingOff() {
+    document.getElementById("loader").style.display = "none"; 
+}
+
+function loadingOn() {
+    document.getElementById("loader").style.display = "block"; 
 }
