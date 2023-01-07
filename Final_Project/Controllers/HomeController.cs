@@ -15,7 +15,19 @@ namespace Final_Project.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Username")))
+            {
+                return Redirect("Login");
+            }
+            else
+            {
+                var model = new
+                {
+                    username = HttpContext.Session.GetString("Username"),
+                    fullname = HttpContext.Session.GetString("Fullname"),
+                };
+                return View(model);
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

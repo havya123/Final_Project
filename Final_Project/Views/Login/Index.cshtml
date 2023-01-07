@@ -23,8 +23,8 @@
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 </head>
-<body class="text-center">
-    <section class="h-100 gradient-form" style="background-color: #eee;">
+<body class="text-center bglogin">
+    <section class="h-100 gradient-form" id="log">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-10">
@@ -52,16 +52,15 @@
                                         </div>
 
                                         <div class="text-center pt-1 mb-5 pb-1">
-                                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">
+                                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" onclick="login()">
                                                 Log in
                                             </button>
                                             <br />
-                                            <a class="text-muted" href="#!">Forgot password?</a>
                                         </div>
 
                                         <div class="d-flex align-items-center justify-content-center pb-4">
                                             <p class="mb-0 me-2">Don't have an account?</p>
-                                            <button type="button" class="btn btn-outline-danger">Create new</button>
+                                            <button type="button" class="btn btn-outline-danger" onclick="regi()">Create new</button>
                                         </div>
 
                                     </form>
@@ -82,6 +81,58 @@
             </div>
         </div>
     </section>
+
+    <div class="container" id="reg">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-img-left d-none d-md-flex">
+                    </div>
+                    <div class="card-body p-4 p-sm-5">
+                        <div class="text-center">
+                            <img src="https://www.itpofusa.com/wp-content/uploads/2020/06/header-logo.png"
+                                 style="width: 185px;" alt="logo">
+                            <h1 class="mt-1 mb-5 pb-1">We are ITP Team</h1>
+                            <h4>Register</h4>
+                        </div>
+                        <form action="/Login/Register" method="post">
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus name="floatingInputUsername">
+                                <label for="floatingInputUsername">Username</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInputFullname" placeholder="myfullname" required autofocus name="floatingInputFullname">
+                                <label for="floatingInputFullname">Fullname</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com" required autofocus name="floatingInputEmail">
+                                <label for="floatingInputEmail">Email address</label>
+                            </div>
+
+                            <hr>
+
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required autofocus name="floatingPassword">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+
+                            <div class="text-center pt-1 mb-5 pb-1">
+                                <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Register</button>
+                            </div>
+
+                            <a class="d-block text-center mt-2 small" href="#" onclick="btsignin()">Have an account? Sign In</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/login.js" asp-append-version="true"></script>
 
 </body>
 </html>

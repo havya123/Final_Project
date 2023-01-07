@@ -46,4 +46,9 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "profile/main_profile",
     pattern: "{controller=profile}/{action= MainProfile}");
+app.MapControllerRoute(
+    name: "login",
+    pattern: "{controller=Login}/{action=Index}");
+
+app.UseSession();
 app.Run();

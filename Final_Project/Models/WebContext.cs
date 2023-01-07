@@ -1,37 +1,44 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Final_Project.Models;
+
 public partial class WebContext : DbContext
 {
     public WebContext()
-    { }
-    public WebContext(DbContextOptions<WebContext> options) : base(options)
-    { }
-     
-    public virtual DbSet<Profile> Profiles { get; set; }
+    {
+    }
+
+    public WebContext(DbContextOptions<WebContext> options)
+        : base(options)
+    {
+    }
+
+    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server = .; Database = Web; User id = admin; password = 123; Encrypt=False");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=TRANNGUYENHIEUT\\SQLEXPRESS; Initial Catalog=Web; user id=trung; password=123;Encrypt=false;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    { 
-        modelBuilder.Entity<Profile>(entity =>
+    {
+        modelBuilder.Entity<User>(entity =>
         {
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
                 .IsUnicode(false);
-
-            entity.Property(e => e.Email).HasMaxLength(100); 
+            entity.Property(e => e.Fullname).HasMaxLength(100);
+            entity.Property(e => e.LastLogin).HasColumnType("datetime");
             entity.Property(e => e.Password)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Phone).HasMaxLength(100);
-            entity.Property(e => e.Avatar).HasMaxLength(100);
-            entity.Property(e => e.Address).HasMaxLength(100);
+            entity.Property(e => e.Username)
+                .HasMaxLength(50)
+                .IsUnicode(false);
         });
-
         OnModelCreatingPartial(modelBuilder);
     }
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder); 
-} 
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+}

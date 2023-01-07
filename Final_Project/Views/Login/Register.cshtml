@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+    User? usr = new User();
+    try
+    {
+        usr = (Final_Project.Models.User)Model.data;
+    }
+    catch (Exception ex)
+    {
+
+        usr = null;
+    }
+
+}
+
+@if (Model.success && usr != null)
+{
+    <div>
+        <h2>Successfully registered!</h2>
+        <p>
+            Welcome, @usr.Fullname<br />
+            Your User ID is: <b>@usr.Id.ToString()</b><br />
+            Your Username is: <b>@usr.Username</b><br />
+            Your Fullname is: <b>@usr.</b><br />
+            Your Pass is: <b>@usr.Password</b><br />
+            Your Email is: <b>@usr.Email</b><br />
+        </p>
+        <p>Go back <a href="/Login">home page</a> to login</p>
+    </div>
+}
+else
+{
+    <div>
+        Failed to register!!
+        <br />
+        <h1>Loi: @Model.message</h1>
+    </div>
+}
+
