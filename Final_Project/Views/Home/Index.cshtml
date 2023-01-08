@@ -41,8 +41,6 @@
     </div>
     <!--end slide-->
     <!--list new product-->
-    @foreach (var product in ViewBag.products)
-    {
         <div class="container">
             <div class="row mt-5">
                 <h2 class="list-product-title">New Product</h2>
@@ -51,6 +49,8 @@
                 </div>
                 <div class="product-group">
                     <div class="row">
+                    @foreach (var product in ViewBag.products)
+                    {
                         <!-- product 1 -->
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="card card-product mb-3">
@@ -64,15 +64,15 @@
                                     </div>
                                     <a asp-action="buy" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-info btn-add-to-card" type="submit" value="Submit"><i class="fa-solid fa-cart-shopping"></i></a>
                                     <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                                    <>
                                 </div>
                             </div>
                         </div>
+                    }
                     </div>
                 </div>
             </div>
         </div>
-    }
+    
     @{
         if (TempData["msg"] != null)
         {
