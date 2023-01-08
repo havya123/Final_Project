@@ -44,26 +44,14 @@
     display: flex;
     gap: 30px;
     margin-bottom:40px;
+
 }
 
-.payment-method .method {
-        border: 1px solid var(--quick-silver);
-        border-radius: 10px;
-        width: 30%;
-        display: flex;
-        align-items: center;
-        padding: 15px 30px;
-        gap: 20px;
-        cursor: pointer;
- }
+.payment-method .method{
+    width:20px;
 
-.payment-method .method .checkmark {
-        margin-left: auto;
-        color: var(--quick-silver);
- }
-.payment-method .method .fill{
-    color:blue;
 }
+
 
 .label-default{
     margin-top:10px;

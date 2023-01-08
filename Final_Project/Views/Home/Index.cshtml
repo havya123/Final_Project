@@ -41,145 +41,46 @@
     </div>
     <!--end slide-->
     <!--list new product-->
-    <div class="container">
-        <div class="row mt-5">
-            <div class="row-border" style="background-color:azure; width:auto;border-radius: 5px;">
-                <h2 class="list-product-title">Trending</h2>
+    @foreach (var product in ViewBag.products)
+    {
+        <div class="container">
+            <div class="row mt-5">
+                <h2 class="list-product-title">New Product</h2>
                 <div class="list-product-subtitle">
                     <p>List Product Description</p>
                 </div>
-            </div>
-            <br />
-            <div class="product-group">
-                <div class="row">
-                    <!-- product 1 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            @*picture 1*@
-                            <img src="~/img/ps5-standard-ps-plus-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">PlayStation 5 / PS5 Standard Edition - KOREA [ CFI-1118 ]</h5>
-                                <div class="card-text product-price mb-3">
-                                    <!-- <span class="del-price">15.999.999<sup>đ</sup></span> -->
-                                    <span class="new-price">15.190.000<sup>đ</sup></span>
+                <div class="product-group">
+                    <div class="row">
+                        <!-- product 1 -->
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="card card-product mb-3">
+                                @*picture 1*@
+                                <img src="~/img/@product.prtImage" class="card-img-top" id="card-img-top" alt="Product 1">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="card-title">@product.prtName</h5>
+                                    <div class="card-text product-price mb-3">
+                                        <!-- <span class="del-price">15.999.999<sup>đ</sup></span> -->
+                                        <span class="new-price" id="new-price">@product.prtPrice<sup>đ</sup></span>
+                                    </div>
+                                    <a asp-action="buy" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-info btn-add-to-card" type="submit" value="Submit"><i class="fa-solid fa-cart-shopping"></i></a>
+                                    <a href="#" class="btn btn-detail">Xem chi tiết</a>
+                                    <>
                                 </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 2 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/ps4-slim-cu-unlock-fw-00-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">PlayStation 4 Slim 500GB FW 9.00 USED</h5>
-                                <div class="card-text product-price mb-3">
-                                    <!-- <span class="del-price">100.000<sup>đ</sup></span> -->
-                                    <span class="new-price">6.272.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 3 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/nintendo-switch-2019-gray-00-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">New Nintendo Switch with Gray Joy Con</h5>
-                                <div class="card-text product-price mb-3">
-                                    <span class="del-price">8.728.000<sup>đ</sup></span>
-                                    <span class="new-price">7.428.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                                <h4 class="sale-sticky">-2%</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 4 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/nintendo-switch-lite-turquoise-00-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Nintendo Switch Lite - Turquoise</h5>
-                                <div class="card-text product-price mb-3">
-                                    <span class="del-price">5.908.000<sup>đ</sup></span>
-                                    <span class="new-price">4.508.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                                <h4 class="sale-sticky">-2%</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 5 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/dualsense-ps5-starlight-blue-00-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">DualSense Starlight Blue - PS5 Wireless Game Controller</h5>
-                                <div class="card-text product-price mb-3">
-                                    <!-- <span class="del-price">100.000<sup>đ</sup></span> -->
-                                    <span class="new-price">2.180.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 6 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/logitech-g29-driving-force-00-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Logitech G29 Driving Force</h5>
-                                <div class="card-text product-price mb-3">
-                                    <!-- <span class="del-price">100.000<sup>đ</sup></span> -->
-                                    <span class="new-price">8.880.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 7 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/nintendo-switch-oled-white-mod-chip-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Nintendo Wii White USED</h5>
-                                <div class="card-text product-price mb-3">
-                                    <!-- <span class="del-price">100.000<sup>đ</sup></span> -->
-                                    <span class="new-price">3.400.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                                <h4 class="sale-sticky">Sale</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 8 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/xbox-series-x-xbox-game-pass-ultimate-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">DOBE Charging Dock For PS5/Xbox Series/Nintendo Switch Controller</h5>
-                                <div class="card-text product-price mb-3">
-                                    <!-- <span class="del-price">100.000<sup>đ</sup></span> -->
-                                    <span class="new-price">480.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+    @{
+        if (TempData["msg"] != null)
+        {
+            <sript>
+                alert('@TempData["msg"]')
+            </sript>
+        }
+    }
     <!--end list new product-->
     <!--list top product-->
     <div class="container">
