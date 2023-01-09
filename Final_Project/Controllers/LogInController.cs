@@ -96,7 +96,7 @@ namespace Final_Project.Controllers
             Users? res = new Users();
             if (data != null)
             {
-                string cnStr = "Server = .; Database = Web; User id = ltapp; password = 123;TrustServerCertificate=True";
+                string cnStr = "Server = .; Database = Web; User id = duc; password = 123456;TrustServerCertificate=True";
                 SqlConnection cnn = new SqlConnection(cnStr);
                 try
                 {

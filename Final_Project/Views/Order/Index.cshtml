@@ -184,7 +184,7 @@
                                             <div class="product-qty">
                                                 <a asp-controller="Order" asp-action="decrease" asp-route-id="@item.Product.Id"> <ion-icon class="decrease"  name="remove-circle-outline"></ion-icon></a>
                                                 
-                                                <span id="quantity" >@item.Quantity</span>
+                                                <span id="quantity" style="font-size:25px;">@item.Quantity</span>
 
                                                 <a asp-controller="Order" asp-action="increase" asp-route-id="@item.Product.Id"> <ion-icon class="increase"  name="add-circle-outline"></ion-icon></a>
                                             </div>
