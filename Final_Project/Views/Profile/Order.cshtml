@@ -1,13 +1,14 @@
 ﻿@{
     Layout = null;
+    ViewData["js"] = "profile.js";
 } 
  
 <tbody class="divScroll">
     <tr>
-        <th scope="row">Your order: 2 </th> 
+        <th scope="row">Your order:  </th>
     </tr>
-    <tr>
-        <th> 
+    <tr id="tbodyResult">
+        <th >  
             <div class="card" style="width: 18rem;">
                 <img src="http://tuonglamphotos.com/wp-content/uploads/2021/07/dich-vu-chup-anh-san-pham-tuonglamphotos-6-1024x683.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -17,65 +18,22 @@
                     <a href="#" class="btn btn-danger">Cancel Order</a>
                 </div>
             </div>
-        </th>
-         <th> 
-            <div class="card" style="width: 18rem;">
-                <img src="http://tuonglamphotos.com/wp-content/uploads/2021/07/dich-vu-chup-anh-san-pham-tuonglamphotos-6-1024x683.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text hidden-text">Some quick example text to build 2</p>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"> See detail</button>
-                    <a href="#" class="btn btn-danger">Cancel Order</a>
-                </div>
-            </div>
-        </th>
-        </tr>
-    <tr>
-        <th>
-            <div class="card" style="width: 18rem;">
-                <img src="http://tuonglamphotos.com/wp-content/uploads/2021/07/dich-vu-chup-anh-san-pham-tuonglamphotos-6-1024x683.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text hidden-text">Some quick example text to build 2</p>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"> See detail</button>
-                    <a href="#" class="btn btn-danger">Cancel Order</a>
-                </div>
-            </div>
-        </th>
-         <th> 
-            <div class="card" style="width: 18rem;">
-                <img src="http://tuonglamphotos.com/wp-content/uploads/2021/07/dich-vu-chup-anh-san-pham-tuonglamphotos-6-1024x683.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text hidden-text">Some quick example text to build 2</p>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"> See detail</button>
-                    <a href="#" class="btn btn-danger">Cancel Order</a>
-                </div>
-            </div>
-        </th>
-        </tr>
-    <tr>
-        <th>
-            <div class="card" style="width: 18rem;">
-                <img src="http://tuonglamphotos.com/wp-content/uploads/2021/07/dich-vu-chup-anh-san-pham-tuonglamphotos-6-1024x683.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text hidden-text">Some quick example text to build 2</p>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"> See detail</button>
-                    <a href="#" class="btn btn-danger">Cancel Order</a>
-                </div>
-            </div>
-        </th>
-        <th>
-            <div class="card" style="width: 18rem;">
-                <img src="http://tuonglamphotos.com/wp-content/uploads/2021/07/dich-vu-chup-anh-san-pham-tuonglamphotos-6-1024x683.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text hidden-text">Some quick example text to build 2</p>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"> See detail</button>
-                    <a href="#" class="btn btn-danger">Cancel Order</a>
-                </div>
-            </div>
-        </th>
+        </th> 
     </tr>
-</tbody> 
+     
+</tbody>
+ 
+<script id="courseTemplate" type="text/x-jquery-tmpl">  
+    <th >
+        <div class="card" style="width: 18rem;"> 
+            <div class="card-body">
+                <h5 class="card-title" id="product">${product}</h5>
+                <p class="card-text hidden-text">${description}</p>
+                <p id="quantity">Quantity: ${quanlity}</p>
+                <p id="total">Total: ${total}</p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showDetail(${id});">See detail</button>
+                <button class="btn btn-danger" onclick="cancelOrder(${id})">Cancel Order</button>
+            </div>
+        </div>
+    </th> 
+</script>

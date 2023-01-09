@@ -22,7 +22,8 @@ function login() {
                 console.log(response);
                 if (response.success) {
                     let usr = response.user;
-                    alert("Hello !" + usr.fullname);
+                    alert("Hello !" + usr.fullname); 
+                    localStorage.setItem("Email", usr.email); 
                     document.location.href = "/Home";
                 }
                 else {
@@ -45,9 +46,9 @@ function login() {
 function check(email, pass) {
     var s = "";
     if (email == "" || email == undefined || email == null)
-        s += "Chưa nhập email !";
+        s += "Email not entered!!";
     if (pass == "" || pass == undefined || pass == null)
-        s += "\nChưa nhập mật khẩu !"
+        s += "\nNo password entered!!"
 
     return s;
 

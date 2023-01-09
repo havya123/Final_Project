@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Text;
 using Final_Project.Models;
 using Microsoft.Data.SqlClient;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Final_Project.Controllers
 {
@@ -36,14 +38,13 @@ namespace Final_Project.Controllers
                 var res = new
                 {
                     Success = false,
-                    Message = "Tìm không thấy User !"
+                    Message = "User Not found!"
                 };
                 return Json(res);
             }
             else
             {
-                var pass = data.Password;
-                var passHashed = EncryptString(pass, _key);
+                var pass = data.Password; 
                 var decryptedPass = DecryptString(usr.Password, _key);
                 if (pass == decryptedPass)
                 {
@@ -62,7 +63,7 @@ namespace Final_Project.Controllers
                     var res = new
                     {
                         Success = false,
-                        Message = "Sai password !",
+                        Message = "Error password !",
                     };
                     return Json(res);
                 }
@@ -96,7 +97,7 @@ namespace Final_Project.Controllers
             Users? res = new Users();
             if (data != null)
             {
-                string cnStr = "Server = TRANNGUYENHIEUT\\SQLEXPRESS; Database = Web; User id = trung; password = 123;TrustServerCertificate=True";
+                string cnStr = "Server = ADMIN-PC; Database = Web; User id = sa; password = 123;TrustServerCertificate=True";
                 SqlConnection cnn = new SqlConnection(cnStr);
                 try
                 {
@@ -116,6 +117,8 @@ namespace Final_Project.Controllers
                         res.Id = int.Parse(reader["Id"].ToString());
                         res.Username = reader["Username"].ToString();
                         res.Password = reader["Password"].ToString();
+
+                        res.Email = reader["Email"].ToString();
                         if (reader["LastLogin"] != null && reader["LastLogin"].ToString() != "")
                         {
                             res.LastLogin = DateTime.Parse(reader["LastLogin"].ToString());
@@ -253,10 +256,20 @@ namespace Final_Project.Controllers
     public class Users
     {
         public int? Id { get; set; }
-        public string Username { get; set; }
+        public string? Username { get; set; }
         public string Password { get; set; }
-        public string Fullname { get; set; }
+        public string? Fullname { get; set; }
         public DateTime? LastLogin { get; set; }
-        public string Email { get; set; }
+        public string? Email { get; set; }
+         
+        public string? Phone { get; set; }
+        public string? ImageURL { get; set; }
+
+
+        public string? Address { get; set; }
+        public string? Gender { get; set; }
+
+        public DateTime? DOB { get; set; } 
+        public IFormFile? Avatar { get; set; }
     }
 }

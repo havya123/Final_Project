@@ -13,7 +13,7 @@
 
     <!-- Boostrap core CSS -->
     <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> 
 </head>
 <body>
     <header>
@@ -31,7 +31,7 @@
                             @Model.fullname
                         </button>
                         <ul class="dropdown-menu dropdown-content" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
                             <li>
                                 <a class="dropdown-item" href="javascript:void(0);" onclick="signOut()">Sign Out</a>
                             </li>
@@ -52,9 +52,9 @@
             &copy; 2022 - Final_Project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-     
-    <script src="~/lib/jquery/dist//jquery.tmpl.js"></script>  
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.tmpl.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/profile.js" asp-append-version="true"></script>
