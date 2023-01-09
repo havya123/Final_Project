@@ -45,13 +45,6 @@ namespace Sign_in.Controllers
             }
             else
             {
-                List<Item> carts = cart;
-                foreach (var i in carts)
-                {
-                    decimal total = Decimal.Parse(i.Product.prtPrice) * i.Quantity;
-                    ViewBag.subtotal = total;
-                }
-
                 ViewBag.total = cart.Sum(item => Decimal.Parse(item.Product.prtPrice) * item.Quantity);
                 ViewBag.total= string.Format("{0:n0}",ViewBag.total);
             }
