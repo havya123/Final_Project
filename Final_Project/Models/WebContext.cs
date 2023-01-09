@@ -17,7 +17,7 @@ public partial class WebContext : DbContext
     }
 
     public virtual DbSet<User> Users { get; set; } 
-    public virtual DbSet<Order> Orders { get; set; }
+    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -42,17 +42,16 @@ public partial class WebContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
         }); 
-        modelBuilder.Entity<Order>(entity =>
+        modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.Property(e => e.NameProduct)
-                .HasMaxLength(50);
-            entity.Property(e => e.Description)
+            entity.Property(e => e.Total)
+                .HasMaxLength(250);
+            entity.Property(e => e.Product)
                 .HasMaxLength(200)
                 .IsUnicode(false);
-            entity.Property(e => e.Number)
+            entity.Property(e => e.Fullname)
                 .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.ImageProduct).HasMaxLength(50);
+                .IsUnicode(false); 
         });
         OnModelCreatingPartial(modelBuilder);
     }

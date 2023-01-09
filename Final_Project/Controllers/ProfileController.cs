@@ -313,7 +313,7 @@ namespace Final_Project.Controllers
             try
             {
                 var db = new WebContext();
-                var ls = db.OrderDeTail.Where(x => x.id_user == Id).ToList();
+                var ls = db.OrderDetails.Where(x => x.Id == Id).ToList();
                 return new
                 {
                     Data = ls,
@@ -329,10 +329,10 @@ namespace Final_Project.Controllers
             try
             {
                 var db = new WebContext();
-                var c1 = db.OrderDeTail.Where(x => x.Id == Id).FirstOrDefault();
+                var c1 = db.OrderDetails.Where(x => x.Id == Id).FirstOrDefault();
                 if (c1 != null)
                 {
-                    db.OrderDeTail.Remove(c1);
+                    db.OrderDetails.Remove(c1);
                     db.SaveChanges();
                     return true;
                 }
