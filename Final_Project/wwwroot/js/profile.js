@@ -233,6 +233,7 @@ function get_order() {
                         dataRes.push(itm); 
                     }
                     listOrder = dataRes; 
+                    console.log(dataRes);
                     $("#tbodyResult").html("");
                     $("#courseTemplate").tmpl(data.data).appendTo("#tbodyResult");
                 }
@@ -248,6 +249,7 @@ function get_order() {
 }
  
 function showDetail(id) {
+    console.log(id);
     if (listOrder != null && id != null && id >= 0) {
         let itm = $.grep(listOrder, function (obj) {
             return obj.id == id;

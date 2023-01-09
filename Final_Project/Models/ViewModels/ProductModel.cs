@@ -1,11 +1,9 @@
-﻿ using System.Diagnostics;
-
+﻿using System.Diagnostics;
 namespace Final_Project.Models.ViewModels
 {
     public class ProductModel
     {
-        public List<Product> _products { get; set;}
-
+        public List<Product> _products { get; set; }
         public List<Product> findAll()
         {
             _products = new List<Product>
@@ -17,7 +15,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",15190000),
                     prtImage="ps5-standard-ps-plus-700x700.jpg"
                 },
-
                 new Product()
                 {
                     Id= 2,
@@ -25,7 +22,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",6272000),
                     prtImage="ps4-slim-cu-unlock-fw-00-700x700.jpg"
                 },
-
                 new Product()
                 {
                     Id= 3,
@@ -33,7 +29,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",7428000),
                     prtImage="nintendo-switch-2019-gray-00-700x700.jpg"
                 },
-
                 new Product()
                 {
                     Id= 4,
@@ -41,8 +36,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",4508000),
                     prtImage="nintendo-switch-lite-turquoise-00-700x700.jpg"
                 },
-
-
                 new Product()
                 {
                     Id= 5,
@@ -50,8 +43,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",2180000),
                     prtImage="dualsense-ps5-starlight-blue-00-700x700.jpg"
                 },
-
-
                 new Product()
                 {
                     Id= 6,
@@ -59,8 +50,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",8880000),
                     prtImage="logitech-g29-driving-force-00-700x700.jpg"
                 },
-
-
                 new Product()
                 {
                     Id= 7,
@@ -68,7 +57,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",3400000),
                     prtImage="nintendo-switch-oled-white-mod-chip-700x700.jpg"
                 },
-
                 new Product()
                 {
                     Id= 8,
@@ -76,7 +64,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",480000),
                     prtImage="xbox-series-x-xbox-game-pass-ultimate-700x700.jpg"
                 },
-
                  new Product()
                 {
                     Id= 9,
@@ -84,7 +71,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",8624000),
                     prtImage="xbox-series-s-xbox-game-pass-ultimate-700x700.jpg"
                 },
-
                 new Product()
                 {
                     Id= 10,
@@ -92,7 +78,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",3200000),
                     prtImage="pandora-2-joysticks-4780-in-1-00-700x700.jpg"
                 },
-
                 new Product()
                 {
                     Id= 11,
@@ -100,7 +85,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",15190000),
                     prtImage="xbox-series-x-xbox-game-pass-ultimate-700x700.jpg"
                 },
-
                 new Product()
                 {
                     Id= 12,
@@ -108,8 +92,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",900000),
                     prtImage="PS4 ko nhận đĩa-700x700.jpg"
                 },
-
-
                 new Product()
                 {
                     Id= 13,
@@ -117,8 +99,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",2200000),
                     prtImage="PS4 lỗi nguồn, khét-700x700.jpg"
                 },
-
-
                 new Product()
                 {
                     Id= 14,
@@ -126,8 +106,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",7862000),
                     prtImage="nintendo-switch-2019-neon-00-700x700.jpg"
                 },
-
-
                 new Product()
                 {
                     Id= 15,
@@ -135,7 +113,6 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",8728000),
                     prtImage="nintendo-switch-animal-crossing-horizon-00-700x700.jpg"
                 },
-
                 new Product()
                 {
                     Id= 16,
@@ -143,21 +120,14 @@ namespace Final_Project.Models.ViewModels
                     prtPrice=string.Format("{0:n0}",100000),
                     prtImage="nintendo-switch-oled-white-mod-chip-700x700.jpg"
                 },
-
-
-
             };
             return _products;
-
         }
-
         public Product find(int id)
         {
-
-            List<Product> products= findAll();
+            List<Product> products = findAll();
             var prod = products.Where(x => x.Id == id).FirstOrDefault();
             return prod;
-
         }
     }
 }

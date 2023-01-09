@@ -12,8 +12,7 @@ using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text;
-using System.Web.Helpers;
+using System.Text; 
 
 namespace Final_Project.Controllers
 {
