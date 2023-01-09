@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Data.SqlClient;
-using System.Data;
-using System.Security.Cryptography;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using System.Text;
 
 namespace Sign_in.Controllers
 {
     public class OrderController : Controller
     {
-        private string _key;
+        
+        SqlConnection con = new SqlConnection("Server = .; Database = Web; User id = ltapp; password = 123;TrustServerCertificate=True");
+        SqlCommand com = new SqlCommand();
 
         public IActionResult Index()
         {
