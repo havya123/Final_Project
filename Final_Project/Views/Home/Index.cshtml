@@ -51,22 +51,32 @@
                     <div class="row">
                     @foreach (var product in ViewBag.products)
                     {
-                        <!-- product 1 -->
-                        <div class="col-md-3 col-sm-6 col-12">
-                            <div class="card card-product mb-3">
-                                @*picture 1*@
-                                <img src="~/img/@product.prtImage" class="card-img-top" id="card-img-top" alt="Product 1">
-                                <div class="card-body">
-                                    <h5 class="card-title" id="card-title">@product.prtName</h5>
-                                    <div class="card-text product-price mb-3">
-                                        <!-- <span class="del-price">15.999.999<sup>đ</sup></span> -->
-                                        <span class="new-price" id="new-price">@product.prtPrice<sup>đ</sup></span>
+                        if (product.Id > 8)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                          <div class="col-md-3 col-sm-6 col-12">
+                                <div class="card card-product mb-3">
+                                    @*picture 1*@
+                                    <img src="~/img/@product.prtImage" class="card-img-top" id="card-img-top" alt="Product 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="card-title">@product.prtName</h5>
+                                        <div class="card-text product-price mb-3">
+                                            <!-- <span class="del-price">15.999.999<sup>đ</sup></span> -->
+                                            <span class="new-price" id="new-price">@product.prtPrice<sup>đ</sup></span>
+                                        </div>
+                                        <a asp-action="buy" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-info btn-add-to-card" type="submit" value="Submit"><i class="fa-solid fa-cart-shopping"></i></a>
+                                        <a href="#" class="btn btn-detail">Xem chi tiết</a>
                                     </div>
-                                    <a asp-action="buy" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-info btn-add-to-card" type="submit" value="Submit"><i class="fa-solid fa-cart-shopping"></i></a>
-                                    <a href="#" class="btn btn-detail">Xem chi tiết</a>
                                 </div>
                             </div>
-                        </div>
+                        }
+                        
+                       
+                       
+
                     }
                     </div>
                 </div>
@@ -92,128 +102,35 @@
             <div class="product-group">
                 <div class="row">
                     <!-- product 1 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/xbox-series-s-xbox-game-pass-ultimate-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Xbox Series S 512GB</h5>
-                                <div class="card-text product-price mb-3">
-                                    <!-- <span class="del-price">100.000<sup>đ</sup></span> -->
-                                    <span class="new-price">8.624.000<sup>đ</sup></span>
+                    @foreach (var product in ViewBag.products)
+                    {
+                        if (product.Id  < 8)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            <div class="col-md-3 col-sm-6 col-12">
+                                <div class="card card-product mb-3">
+                                    @*picture 1*@
+                                    <img src="~/img/@product.prtImage" class="card-img-top" id="card-img-top" alt="Product 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="card-title">@product.prtName</h5>
+                                        <div class="card-text product-price mb-3">
+                                            <!-- <span class="del-price">15.999.999<sup>đ</sup></span> -->
+                                            <span class="new-price" id="new-price">@product.prtPrice<sup>đ</sup></span>
+                                        </div>
+                                        <a asp-action="buy" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-info btn-add-to-card" type="submit" value="Submit"><i class="fa-solid fa-cart-shopping"></i></a>
+                                        <a href="#" class="btn btn-detail">Xem chi tiết</a>
+                                    </div>
                                 </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
                             </div>
-                        </div>
-                    </div>
-                    <!-- product 2 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/pandora-2-joysticks-4780-in-1-00-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Máy chơi game Pandora's Box 2 Joysticks 4780 Games</h5>
-                                <div class="card-text product-price mb-3">
-                                    <!-- <span class="del-price">100.000<sup>đ</sup></span> -->
-                                    <span class="new-price">3.200.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 3 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/xbox-series-x-xbox-game-pass-ultimate-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Xbox Series X 1TB</h5>
-                                <div class="card-text product-price mb-3">
-                                    <span class="del-price">18.490.000<sup>đ</sup></span>
-                                    <span class="new-price">15.190.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                                <h4 class="sale-sticky">-2%</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 4 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/PS4 ko nhận đĩa-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">PS4 Lỗi Không Nhận Đĩa</h5>
-                                <div class="card-text product-price mb-3">
-                                    <!-- <span class="del-price">100.000<sup>đ</sup></span> -->
-                                    <span class="new-price">900.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 5 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/PS4 lỗi nguồn, khét-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">PS4 Lỗi Không Lên Nguồn Điện, Có Mùi Khét</h5>
-                                <div class="card-text product-price mb-3">
-                                    <!-- <span class="del-price">100.000<sup>đ</sup></span> -->
-                                    <span class="new-price">2.200.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 6 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/nintendo-switch-2019-neon-00-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">New Nintendo Switch with Neon Red Blue Joy Con - BH 3 tháng</h5>
-                                <div class="card-text product-price mb-3">
-                                    <span class="del-price">7.862.000<sup>đ</sup></span>
-                                    <span class="new-price">6.742.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                                <h4 class="sale-sticky">-2%</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 7 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/nintendo-switch-animal-crossing-horizon-00-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">New Nintendo Switch - Animal Crossing New Horizons Special Edition</h5>
-                                <div class="card-text product-price mb-3">
-                                    <span class="del-price">8.728.000<sup>đ</sup></span>
-                                    <span class="new-price">7.428.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                                <h4 class="sale-sticky">-2%</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product 8 -->
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card card-product mb-3">
-                            <img src="~/img/nintendo-switch-oled-white-mod-chip-700x700.jpg" class="card-img-top" alt="Product 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Nintendo Switch OLED model with White Joy Con Mod Chip + MicroSD 128GB</h5>
-                                <div class="card-text product-price mb-3">
-                                    <span class="del-price">100.000<sup>đ</sup></span>
-                                    <span class="new-price">80.000<sup>đ</sup></span>
-                                </div>
-                                <a href="#" class="btn btn-info btn-add-to-card"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <a href="#" class="btn btn-detail">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
+                        }
+
+
+
+
+                    }
                 </div>
             </div>
         </div>
@@ -227,5 +144,6 @@
     </footer>
     <!--load bootstrap js-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/home.js" asp-append-version="true"></script>
 </body>
 </html>

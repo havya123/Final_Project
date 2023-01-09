@@ -65,11 +65,33 @@
 }
 
 .payment-form input {
-    padding: 5px 100px;
-    font-size: var(--fs-18);
-    font-weight: var(--fw-5);
+    padding: 5px ;
+    width: 400px;
+   
     
     
+}
+
+.payment-form select {
+    width: 400px;
+}
+
+.remove{
+    margin-left:100px;
+    font-size:20px;
+}
+
+.increase{
+    font-size:25px;
+
+}
+
+.decrease{
+    font-size:25px;
+}
+
+.price{
+    word-spacing:-2px;
 }
 
 .payment-form select {
@@ -98,6 +120,10 @@
     margin-left: 10px
 }
 
+#quantity{
+    
+}
+
 .product-img{
     width: 450px;
     margin-bottom:10px;
@@ -124,4 +150,20 @@
 }
 .total{
     margin-bottom:10px
+}
+.price1 {
+   
+    font-size: large;
+    font-weight: bold;
+}
+
+#total {
+    color: rgb(245, 5, 5);
+    font-size: large;
+    font-weight: bold;
+}
+
+#payAmount {
+    font-size: large;
+    font-weight: bold;
 }

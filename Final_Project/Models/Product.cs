@@ -8,7 +8,7 @@ namespace Final_Project.Models
         public int Id { get; set; }
         public string prtName { get; set; }
 
-        public double prtPrice { get; set; }   
+        public string prtPrice { get; set; }   
 
         public string prtImage { get; set; }
 

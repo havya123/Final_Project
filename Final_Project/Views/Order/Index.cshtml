@@ -4,37 +4,6 @@
 }
 
 
-@*
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale = 0.1">
-        <title>Checkout Page </title>
-        <link rel="stylesheet" href="~/css/order.css" asp-append-version="true" />
-    </head>
-
-    <body>
-        <main class="container">
-            <h1 class="heading">
-                <ion-icon name="cart-outline"></ion-icon> Cart
-            </h1>
-            <div class="item-flex">
-
-
-            </div>
-
-        </main>
-
-    </body>
-
-
-
-</html>*@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -51,7 +20,7 @@
 <body>   
     <main class="container">
         <h1 class="heading">
-            <ion-icon name="cart-outline"></ion-icon> Cart
+            <ion-icon name="cart-outline"></ion-icon> CHECKOUT
         </h1>
         <div class="item-flex">
             <section class="checkout"> 
@@ -62,25 +31,25 @@
                  
                     <lable class="label-default">Full Name</lable>
                     <div class="name">
-                            <input type="text" class="input-default" name="fullname" />
+                            <input type="text" id="fullname" class="input-default" required autofocus name="fullname" />
                     </div>
 
                     <label class="label-default">Phone Number</label>
                     <div class="phone">
-                            <input type="number" class="input-default" name="phoneNumber" />
+                            <input type="text" id="phone" class="input-default" name="phoneNumber" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="10" required autofocus name="phone" />
                     </div>
                      <label class="label-default">Address</label>
                     <div class="address">
-                            <input type="text" class="input-default" placeholder="Address number, Street" name="street" />
+                            <input type="text" id="street" class="input-default" placeholder="Address number, Street" name="street" required autofocus name="street" />
                     </div>
                         <label class="label-default">Districts and Towns</label>
                     <div class="district">
-                            <input type="text" class="input-default" placeholder="Districts and Towns" name="districts" />
+                            <input type="text" id="districts" class="input-default" placeholder="Districts and Towns" name="districts" required autofocus name="districts" />
                     </div>
                     
                     <label class="label-default">City</label>
                     <div class="City">
-                            <input type="text" class="input-default" placeholder="City" name="City"/>
+                            <input type="text" class="input-default" id="city" placeholder="City" name="City" required autofocus name="city" />
                     </div>
                      
                     <label class="label-default">Province</label>
@@ -155,7 +124,7 @@
 
                     <label class="label-default">Email</label>
                     <div class="email">
-                            <input type="email" class="input-default" name="Email"  />
+                            <input type="email" id="email" class="input-default" name="Email" required autofocus name="email" />
                     </div>
                     </div>
                  
@@ -181,8 +150,8 @@
                    
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary">
-                            <b>Thanh toán</b> $ <span id="payAmount">@ViewBag.total</span>
+                        <button type="submit" class="btn btn-primary" onclick="validation()">
+                            <b>Thanh toán</b><span id="payAmount">@ViewBag.total<sup>đ</sup></span>
                         </button>
                     </div>
 
@@ -206,28 +175,30 @@
                                 <div class="card">
                                     <div class="img-box">
                                         <img src="~/img/@item.Product.prtImage" alt="pc 50 củ " class="product-img" style="width:200px" />
+                                         <a asp-controller="Order" asp-action="remove" asp-route-id="@item.Product.Id"> <ion-icon class="remove"  name="trash-outline"></ion-icon></a>
                                     </div>
                                     <div class="detail">
                                         <h6 class="produc-name" name="product" value="@item.Product.prtName">@item.Product.prtName</h6>
 
                                         <div class="warpper">
                                             <div class="product-qty">
-                                                <button id="decrement">
-                                                    <ion-icon name="remove-outline"></ion-icon>
-                                                </button>
+                                                <a asp-controller="Order" asp-action="decrease" asp-route-id="@item.Product.Id"> <ion-icon class="decrease"  name="remove-circle-outline"></ion-icon></a>
+                                                
+                                                <span id="quantity" >@item.Quantity</span>
 
-                                                <span id="quantity">@item.Quantity</span>
-
-                                                <button id="increment">
-                                                    <ion-icon name="add-outline"></ion-icon>
-                                                </button>
+                                                <a asp-controller="Order" asp-action="increase" asp-route-id="@item.Product.Id"> <ion-icon class="increase"  name="add-circle-outline"></ion-icon></a>
                                             </div>
+                                         
 
                                         </div>
 
                                         <div class="price">
-                                            <span id="price" name="total" value="@ViewBag.total">@item.Product.prtPrice</span>
+                                            <span class="price1" name="total" value="@ViewBag.total"><span class="gia">Giá: </span>@item.Product.prtPrice<sup>đ</sup></span>
                                         </div>
+                                        <div class="sub-total">
+                                            <span>Subtotal </span><span id="total">@ViewBag.subtotal<sup>đ</sup></span>
+                                        </div>
+                                   
                                     </div>
 
 
@@ -239,35 +210,22 @@
 
 
                     }
-
-                    <div class="wrapper">
-
-                        <div class="discount-token">
-
-                            <label for="discount-token" class="label-default">Discount</label>
-
-                            <div class="wrapper-flex">
-
-                                <input type="text" name="discount-token" id="discount-token" class="input-default">
-
-                                <button class="btn btn-outline">Apply</button>
-
-                            </div>
-
-                        </div>
+                  
+                         <div class="wrapper">
 
                         <div class="amount">
-                            <div class="subtotal">
-                                <span>Total</span> <span>$ <span id="subtotal">@ViewBag.total</span></span>
-                            </div>
+                        
                             <div class="total">
-                                <span>Total amount</span> <span>$ <span id="total">@ViewBag.total</span></span>
+                                <span>Total amount </span><span id="total">@ViewBag.total<sup>đ</sup></span>
                             </div>
 
                         </div>
                         
 
                     </div>
+
+                   
+                   
 
 
                 }
